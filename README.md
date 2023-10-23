@@ -46,43 +46,86 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 4-bit Count Down Counter
 ### Procedure
-/* write all the steps invloved */
+Create a New Project:
 
+Open Quartus and create a new project by selecting "File" > "New Project Wizard."
+Follow the wizard's instructions to set up your project, including specifying the project name, location, and target device (FPGA).
+Create a New Design File:
 
+Once the project is created, right-click on the project name in the Project Navigator and select "Add New File."
+Choose "Verilog HDL File" or "VHDL File," depending on your chosen hardware description language.
+Write the Combinational Logic Code:
+
+Open the newly created Verilog or VHDL file and write the code for your combinational logic.
+Compile the Project:
+
+To compile the project, click on "Processing" > "Start Compilation" in the menu.
+Quartus will analyze your code, synthesize it into a netlist, and perform optimizations based on your target FPGA device.
+Analyze and Fix Errors:*
+
+If there are any errors or warnings during the compilation process, Quartus will display them in the Messages window.
+Review and fix any issues in your code if necessary.
+View the RTL diagram.
+6.*Verification:
+
+Click on "File" > "New" > "Verification/Debugging Files" > "University Program VWF".
+Once Waveform is created Right Click on the Input/Output Panel > " Insert Node or Bus" > Click on Node Finder > Click On "List" > Select All.
+Give the Input Combinations according to the Truth Table amd then simulate the Output Waveform.
 
 ### PROGRAM 
-/*
+```
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+Developed by: MATHESWARAN K
+RegisterNumber:  212222110024
+```
+#### UP COUNTER:
+```
+module upcounter(D,C,B,A,CLK);
+output reg D,C,B,A;
+input CLK;
+always @(posedge CLK)
+begin
+	D=(C&B&A)^D;
+	C=(B&A)^C;
+	B=(A^B);
+	A=(1^A);
+end
+endmodule
+```
 
+#### DOWN COUNTER:
+```
+module downcounter(A,B,C,D,CLK);
+input CLK;
+output reg A,B,C,D;
+always@(posedge CLK)
+begin
+	A=(((~B)&(~C)&(~D))^A);
+	B=(((~C)&(~D))^B);
+	C=((~D)^(C));
+	D=1^(D);
+end
+endmodule
+```
 
+### RTL DIAGRAM:  
+#### UP COUNTER:
+![image](https://github.com/mathes6112004/Exp-7-Synchornous-counters-/assets/119477782/05dec14a-497c-4f72-b318-76f04bb3fcf2)
 
-
-
-
-### RTL LOGIC UP COUNTER AND DOWN COUNTER  
-
-
-
-
-
-
-
-
-
-### TIMING DIGRAMS FOR COUNTER  
-
-
-
-
+#### DOWN COUNTER:
+![image](https://github.com/mathes6112004/Exp-7-Synchornous-counters-/assets/119477782/40051694-11d8-4e4c-a99d-855a95f5fa9e)
 
 ### TRUTH TABLE 
+#### UP COUNTER:
+![image](https://github.com/mathes6112004/Exp-7-Synchornous-counters-/assets/119477782/aeaa8dbd-47b6-46e2-ad84-17cb77070b46)
+#### DOWN COUNTER:
+![image](https://github.com/mathes6112004/Exp-7-Synchornous-counters-/assets/119477782/415c94e5-f598-4450-9737-b9cf0719237d)
 
+### OUTPUT WAVEFORM:
+#### UP COUNTER:
+![image](https://github.com/mathes6112004/Exp-7-Synchornous-counters-/assets/119477782/23f6daa9-8965-4a4e-8647-c9e546210c4c)
+#### DOWN COUNTER:
+![image](https://github.com/mathes6112004/Exp-7-Synchornous-counters-/assets/119477782/36ff6040-7a93-49eb-9874-1d3239ff5160)
 
-
-
-
-
-### RESULTS 
+### RESULTS:
+Thus Synchornous counters up counter and down counter circuit are studied and the truth table for different logic gates are verified.
